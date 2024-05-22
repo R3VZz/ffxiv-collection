@@ -87,7 +87,7 @@ const Minions = ({title}) => {
                         </div>
                     </div>
                 ))
-                ) : (<p>No data available</p>)
+                ) : (<p>Loading...</p>)
                 }
             </div>
         </div>

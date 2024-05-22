@@ -14,7 +14,7 @@ nav {
   border: white solid 2px;
   border-radius: 10px;
   text-align: center;
-  background: linear-gradient(#454B66, #677DB7);
+  background: linear-gradient(#506ef3, #002a9e);
   padding: 10px 20px;
   margin-bottom: 20px;
 }
@@ -37,8 +37,10 @@ li a {
 }
 
 li a:hover {
-  background-color: #312F2F;
-  border-radius: 5px;
+  background: linear-gradient(#020b33, #021c63);
+  /* background-color: #312F2F; */
+  border: white solid 1px;
+  border-radius: 10px;
 }
 
 .info-container {
@@ -58,8 +60,7 @@ li a:hover {
   border-radius: 10px;
   padding: 15px;
   margin: 10px 0;
-  /* background-color: rgba(255, 255, 255, 0.1); */
-  background: linear-gradient(#351414, #171718);
+  background: linear-gradient(#506ef3, #002a9e);
 }
 
 .info h3 {
@@ -73,7 +74,26 @@ li a:hover {
 }
 
 input {
+  border: white solid 2px;
+  border-radius: 10px;
+  color: white;
+  background-color: rgb(46, 45, 45);
   width: 60%;
+  height: 40px;
+}
+
+select {
+  border: white solid 2px;
+  border-radius: 10px;
+  margin-left: 5px;
+  height: 40px;
+  color: white;
+  background: linear-gradient(#506ef3, #002a9e);
+}
+
+select > option {
+  color: black;
+  
 }
 
 @media (min-width: 600px) {
