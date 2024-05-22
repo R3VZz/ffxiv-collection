@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const Minions = () => {
+const Minions = ({title}) => {
     const [minionData, setMinionData] = useState([]);
     const [searchMinionData, setSearchMinionData] = useState("");
     const [filteredMinionData, setFilteredMinionData] = useState([]);
@@ -53,11 +53,11 @@ const Minions = () => {
 
     return (
         <div>
-            <h1>Minions</h1>
+            <h1>{title}</h1>
             <div>
                 <input 
                     type='text'
-                    placeholder='Search by name'
+                    placeholder='Search by name e.g. alexander'
                     value={searchMinionData}
                     onChange={handleSearch}    
                 />
@@ -66,16 +66,25 @@ const Minions = () => {
                     <option value='desc'>Descending</option>
                 </select>
             </div>
-            <div className='minions-container'>
+            <div className='info-container'>
                 {filteredMinionData.length > 0 ? (filteredMinionData.map((minion) => (
-                    <div className='minion-info' key={minion.id}>
-                        <h2>Name: {minion.name}</h2>
-                        <h3>Description</h3>
-                        <p>{minion.description}</p>
-                        <h3>Enhanced Description: </h3>
-                        <p>{minion.enhanced_description}</p>
-                        <h3>Patch Released: </h3>
-                        <p>{minion.patch}</p>
+                    <div className='info' key={minion.id}>
+                        <div className='name'>
+                            <h3>Name:</h3>
+                            <p>{minion.name}</p>
+                        </div>
+                        <div className='description'>
+                            <h3>Description</h3>
+                            <p>{minion.description}</p>
+                        </div>
+                        <div className='description'>
+                            <h3>Enhanced Description: </h3>
+                            <p>{minion.enhanced_description}</p>
+                        </div>
+                        <div className='patch'>
+                            <h3>Patch Released: </h3>
+                            <p>{minion.patch}</p>
+                        </div>
                     </div>
                 ))
                 ) : (<p>No data available</p>)

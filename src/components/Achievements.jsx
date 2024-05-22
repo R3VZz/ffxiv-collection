@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const Achievements = () => {
+const Achievements = ({title}) => {
     const [achievementData, setAchievementData] = useState([]);
     const [searchAchievementData, setSearchAchievementData] = useState("");
     const [filteredAchievementData, setFilteredAchievementData] = useState([]);
@@ -12,7 +12,7 @@ const Achievements = () => {
     const fetchHandler = async () => {
         try {
             let response = await fetch(
-                "https://ffxivcollect.com/api/achievements?limit=100"
+                "https://ffxivcollect.com/api/achievements"
             );
 
             if (!response.ok) {
@@ -54,11 +54,11 @@ const Achievements = () => {
 
     return (
         <div>
-            <h1>Achievements</h1>
+            <h1>{title}</h1>
             <div>
                 <input 
                     type='text'
-                    placeholder='Search by name'
+                    placeholder='Search by name e.g. fast and flurry-ous'
                     value={searchAchievementData}
                     onChange={handleSearch}    
                 />
@@ -67,15 +67,25 @@ const Achievements = () => {
                     <option value='desc'>Descending</option>
                 </select>
             </div>
-            <div className='minions-container'>
+            <div className='info-container'>
                 {filteredAchievementData.length > 0 ? (filteredAchievementData.map((achievment) => (
-                    <div className='achievement-info' key={achievment.id}>
-                        <h2>Name: {achievment.name}</h2>
-                        <h3>Description</h3>
-                        <p>{achievment.description}</p>
-                        <p>Players Acheived: {achievment.owned}</p>
-                        <h3>Patch Released: </h3>
-                        <p>{achievment.patch}</p>
+                    <div className='info' key={achievment.id}>
+                        <div className='name'>
+                            <h3>Name:</h3>
+                            <p>{achievment.name}</p>
+                        </div>
+                        <div className='description'>
+                            <h3>Description</h3>
+                            <p>{achievment.description}</p>
+                        </div>
+                        <div>
+                            <h3>Players completed: </h3>
+                            <p>{achievment.owned}</p>
+                        </div>
+                        <div className='patch'>
+                            <h3>Patch Released: </h3>
+                            <p>{achievment.patch}</p>
+                        </div>
                     </div>
                 ))
                 ) : (<p>No data available</p>)

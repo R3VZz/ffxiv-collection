@@ -21,10 +21,10 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/Home" element={<Home />} />
-          <Route path="/Achievements" element={<Achievements />} />
-          <Route path="/Mounts" element={<Mounts />} />
-          <Route path="/Minions" element={<Minions />} />
+          <Route path="/Home" element={<Home title="Home"/>} />
+          <Route path="/Achievements" element={<Achievements title="Achievements"/>} />
+          <Route path="/Mounts" element={<Mounts title="Mounts"/>} />
+          <Route path="/Minions" element={<Minions title="Minions"/>} />
         </Routes>
       </Router>
     </div>

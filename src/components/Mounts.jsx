@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const Mounts = () => {
+const Mounts = ({title}) => {
     const [mountData, setMountData] = useState([]);
     const [searchMountData, setSearchMountData] = useState("");
     const [filteredMountData, setFilteredMountData] = useState([]);
@@ -53,11 +53,11 @@ const Mounts = () => {
 
     return (
         <div>
-            <h1>Mounts</h1>
+            <h1>{title}</h1>
             <div>
                 <input 
                     type='text'
-                    placeholder='Search name e.g. chocobo'
+                    placeholder='Search by name e.g. chocobo'
                     value={searchMountData}
                     onChange={handleSearch}    
                 />
@@ -66,16 +66,25 @@ const Mounts = () => {
                     <option value='desc'>Descending</option>
                 </select>
             </div>
-            <div className='mounts-container'>
+            <div className='info-container'>
                 {filteredMountData.length > 0 ? (filteredMountData.map((mount) => (
-                    <div className='mount-info' key={mount.id}>
-                        <h2>Name: {mount.name}</h2>
-                        <h3>Description</h3>
-                        <p>{mount.description}</p>
-                        <h3>Enhanced Description: </h3>
-                        <p>{mount.enhanced_description}</p>
-                        <h3>Patch Released: </h3>
-                        <p>{mount.patch}</p>
+                    <div className='info' key={mount.id}>
+                        <div className='name'>
+                            <h3>Name:</h3>
+                            <p>{mount.name}</p>
+                        </div>
+                        <div className='description'>
+                            <h3>Description</h3>
+                            <p>{mount.description}</p>
+                        </div>
+                        <div className='description'>
+                            <h3>Enhanced Description: </h3>
+                            <p>{mount.enhanced_description}</p>
+                        </div>
+                        <div className='patch'>
+                            <h3>Patch Released: </h3>
+                            <p>{mount.patch}</p>
+                        </div>
                     </div>
                 ))
                 ) : (<p>No data available</p>)
