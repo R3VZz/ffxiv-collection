@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 
-const Mounts = () => {
-    const [mountData, setMountData] = useState([]);
+const Achievements = () => {
+    const [achievementData, setAchievementData] = useState([]);
     const [err, setErr] = useState(null);
 
     const fetchHandler = async () => {
         try {
             let response = await fetch(
-                "https://ffxivcollect.com/api/mounts"
+                "https://ffxivcollect.com/api/achievements?limit=10"
             );
 
             if (!response.ok) {
@@ -15,7 +15,7 @@ const Mounts = () => {
             }
             let data = await response.json();
             console.log(data)
-            setMountData(data.results);
+            setAchievementData(data.results);
         } catch (err) {
             console.log(err.message);
             setErr(err.message);
@@ -28,17 +28,16 @@ const Mounts = () => {
 
     return (
         <div>
-            <h1>Mounts</h1>
-            <div className='mounts-container'>
-                {mountData.length > 0 ? (mountData.map((mount) => (
-                    <div key={mount.id}>
-                        <h2>Name: {mount.name}</h2>
+            <h1>Achievements</h1>
+            <div className='minions-container'>
+                {achievementData.length > 0 ? (achievementData.map((achievment) => (
+                    <div key={achievment.id}>
+                        <h2>Name: {achievment.name}</h2>
                         <h3>Description</h3>
-                        <p>{mount.description}</p>
-                        <h3>Enhanced Description: </h3>
-                        <p>{mount.enhanced_description}</p>
+                        <p>{achievment.description}</p>
+                        <p>Players Acheived: {achievment.owned}</p>
                         <h3>Patch Released: </h3>
-                        <p>{mount.patch}</p>
+                        <p>{achievment.patch}</p>
                     </div>
                 ))
                 ) : (<p>No data available</p>)
@@ -48,4 +47,4 @@ const Mounts = () => {
     );
 }
 
-export default Mounts;
+export default Achievements;

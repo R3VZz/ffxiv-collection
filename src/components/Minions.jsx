@@ -7,7 +7,7 @@ const Minions = () => {
     const fetchHandler = async () => {
         try {
             let response = await fetch(
-                "https://ffxivcollect.com/api/minions?limit=1000"
+                "https://ffxivcollect.com/api/minions"
             );
 
             if (!response.ok) {
@@ -28,13 +28,13 @@ const Minions = () => {
 
     return (
         <div>
-            <h1>Final Fantasy 14 - Mounts</h1>
+            <h1>Minions</h1>
             <div className='minions-container'>
                 {minionData.length > 0 ? (minionData.map((minion) => (
                     <div key={minion.id}>
                         <h2>Name: {minion.name}</h2>
                         <h3>Description</h3>
-                        <p>Description: {minion.description}</p>
+                        <p>{minion.description}</p>
                         <h3>Enhanced Description: </h3>
                         <p>{minion.enhanced_description}</p>
                         <h3>Patch Released: </h3>
@@ -45,7 +45,6 @@ const Minions = () => {
                 }
             </div>
         </div>
-
     );
 }
 
