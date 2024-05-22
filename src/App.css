@@ -1,12 +1,29 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
   background-color: #282c34;
-  /* width: 500px; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* justify-content: center; */
+  /* font-size: calc(10px + 2vmin); */
   color: white;
+}
+
+nav {
+  border: white solid 2px;
+  text-align: center;
+}
+
+nav > ul {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  list-style: none;
+}
+
+li a {
+  text-decoration: none;
+  color: aliceblue;
+  padding: 5px;
 }
