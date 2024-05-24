@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 
-const Achievements = ({title}) => {
+const Achievements = ({ title }) => {
     const [achievementData, setAchievementData] = useState([]);
     const [searchAchievementData, setSearchAchievementData] = useState("");
     const [filteredAchievementData, setFilteredAchievementData] = useState([]);
     const [sortOrder, setSortOrder] = useState('asc');
     const [err, setErr] = useState(null);
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const entriesPerPage = 20;
 
 
 
@@ -27,40 +30,42 @@ const Achievements = ({title}) => {
     }
 
     useEffect(() => {
-        fetchHandler()
-    }, [])
+        fetchHandler();
+    }, []);
 
     useEffect(() => {
         let filteredData = achievementData.filter((achievement) =>
-        achievement.name.toLowerCase().includes(searchAchievementData.toLowerCase())
-    );
+            achievement.name.toLowerCase().includes(searchAchievementData.toLowerCase())
+        );
 
-    if (sortOrder === 'asc') {
-        filteredData.sort((a,b) => a.name.localeCompare(b.name));
-    } else {
-        filteredData.sort((a, b) => b.name.localeCompare(a.name));
-    }
+        if (sortOrder === 'asc') {
+            filteredData.sort((a, b) => a.name.localeCompare(b.name));
+        } else {
+            filteredData.sort((a, b) => b.name.localeCompare(a.name));
+        }
 
-    setFilteredAchievementData(filteredData)
+        setFilteredAchievementData(filteredData)
     }, [searchAchievementData, sortOrder, achievementData])
 
     const handleSearch = (e) => {
         setSearchAchievementData(e.target.value)
+        setCurrentPage(1)
     }
 
     const handleSort = (e) => {
         setSortOrder(e.target.value)
+        setCurrentPage(1)
     }
 
     return (
         <div>
             <h1>{title}</h1>
             <div>
-                <input 
+                <input
                     type='text'
                     placeholder='Search by name e.g. fast and flurry-ous'
                     value={searchAchievementData}
-                    onChange={handleSearch}    
+                    onChange={handleSearch}
                 />
                 <select value={sortOrder} onChange={handleSort}>
                     <option value='asc'>Ascending</option>

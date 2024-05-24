@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const Mounts = ({title}) => {
+const Mounts = ({ title }) => {
     const [mountData, setMountData] = useState([]);
     const [searchMountData, setSearchMountData] = useState("");
     const [filteredMountData, setFilteredMountData] = useState([]);
@@ -31,16 +31,16 @@ const Mounts = ({title}) => {
 
     useEffect(() => {
         let filteredData = mountData.filter((mount) =>
-        mount.name.toLowerCase().includes(searchMountData.toLowerCase())
-    );
+            mount.name.toLowerCase().includes(searchMountData.toLowerCase())
+        );
 
-    if (sortOrder === 'asc') {
-        filteredData.sort((a,b) => a.name.localeCompare(b.name));
-    } else {
-        filteredData.sort((a, b) => b.name.localeCompare(a.name));
-    }
+        if (sortOrder === 'asc') {
+            filteredData.sort((a, b) => a.name.localeCompare(b.name));
+        } else {
+            filteredData.sort((a, b) => b.name.localeCompare(a.name));
+        }
 
-    setFilteredMountData(filteredData)
+        setFilteredMountData(filteredData)
     }, [searchMountData, sortOrder, mountData])
 
     const handleSearch = (e) => {
@@ -55,11 +55,11 @@ const Mounts = ({title}) => {
         <div>
             <h1>{title}</h1>
             <div>
-                <input 
+                <input
                     type='text'
                     placeholder='Search by name e.g. chocobo'
                     value={searchMountData}
-                    onChange={handleSearch}    
+                    onChange={handleSearch}
                 />
                 <select value={sortOrder} onChange={handleSort}>
                     <option value='asc'>Ascending</option>
@@ -69,13 +69,15 @@ const Mounts = ({title}) => {
             <div className='info-container'>
                 {filteredMountData.length > 0 ? (filteredMountData.map((mount) => (
                     <div className='info' key={mount.id}>
-                        <div className='name'>
-                            <h3>Name:</h3>
-                            <p>{mount.name}</p>
-                        </div>
-                        <div className='description'>
-                            <h3>Description</h3>
-                            <p>{mount.description}</p>
+                        <div>
+                            <div className='name'>
+                                <h3>Name</h3>
+                                <p>{mount.name}</p>
+                            </div>
+                            <div className='description'>
+                                <h3>Description</h3>
+                                <p>{mount.description}</p>
+                            </div>
                         </div>
                         <div className='description'>
                             <h3>Enhanced Description: </h3>

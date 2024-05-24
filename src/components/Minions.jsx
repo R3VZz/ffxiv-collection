@@ -69,14 +69,17 @@ const Minions = ({title}) => {
             <div className='info-container'>
                 {filteredMinionData.length > 0 ? (filteredMinionData.map((minion) => (
                     <div className='info' key={minion.id}>
-                        <div className='name'>
-                            <h3>Name:</h3>
-                            <p>{minion.name}</p>
+                        <div>
+                            <div className='name'>
+                                <h3>Name</h3>
+                                <p>{minion.name}</p>
+                            </div>
+                            <div className='description'>
+                                <h3>Description</h3>
+                                <p>{minion.description}</p>
+                            </div>
                         </div>
-                        <div className='description'>
-                            <h3>Description</h3>
-                            <p>{minion.description}</p>
-                        </div>
+
                         <div className='description'>
                             <h3>Enhanced Description: </h3>
                             <p>{minion.enhanced_description}</p>

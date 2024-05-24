@@ -3,7 +3,7 @@ import Home from './components/Home';
 import Achievements from './components/Achievements';
 import Mounts from './components/Mounts';
 import Minions from './components/Minions';
-import { Route, BrowserRouter as Router, Link, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Link, Routes, Navigate } from 'react-router-dom';
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
         </nav>
 
         <Routes>
+          <Route path="/" element={<Navigate to="/Home" />} />
           <Route path="/Home" element={<Home title="Home"/>} />
           <Route path="/Achievements" element={<Achievements title="Achievements"/>} />
           <Route path="/Mounts" element={<Mounts title="Mounts"/>} />

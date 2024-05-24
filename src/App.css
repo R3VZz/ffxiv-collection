@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  background-image: url(../public/images/ff14-heavensward-concept-art.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
   background-color: #161616;
   min-height: 100vh;
   display: flex;
@@ -17,6 +21,26 @@ nav {
   background: linear-gradient(#506ef3, #002a9e);
   padding: 10px 20px;
   margin-bottom: 20px;
+}
+
+h1, h2 {
+  text-shadow:
+    -2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px -2px 0 #000,
+    2px 2px 0 #000;
+}
+
+p, h3 {
+  text-shadow: 
+  -1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px -1px 0 #000,
+  1px 1px 0 #000;
+}
+
+.home-container {
+  width: 100%;
 }
 
 nav > ul {
@@ -38,7 +62,6 @@ li a {
 
 li a:hover {
   background: linear-gradient(#020b33, #021c63);
-  /* background-color: #312F2F; */
   border: white solid 1px;
   border-radius: 10px;
 }
@@ -65,12 +88,13 @@ li a:hover {
 
 .info h3 {
   margin-top: 0;
-  font-size: 1.5em;
+  margin-bottom: 0;
+  text-decoration: underline;
 }
 
 .info p {
-  margin: 5px 0;
-  font-size: 1.1em;
+  margin-top: 1;
+  margin-bottom: 2;
 }
 
 input {
@@ -93,7 +117,12 @@ select {
 
 select > option {
   color: black;
-  
+}
+
+img {
+  width: 100%;
+  border: white solid 5px;
+  border-radius: 16px;
 }
 
 @media (min-width: 600px) {
