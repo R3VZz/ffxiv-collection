@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/ffxiv-collection/static/css/main.cec62325.css",
+    "main.js": "/ffxiv-collection/static/js/main.9386dac9.js",
+    "static/media/ff14-shadowbringers-art.jpg": "/ffxiv-collection/static/media/ff14-shadowbringers-art.c03750d8a9cc52569bf3.jpg",
+    "index.html": "/ffxiv-collection/index.html",
+    "main.cec62325.css.map": "/ffxiv-collection/static/css/main.cec62325.css.map",
+    "main.9386dac9.js.map": "/ffxiv-collection/static/js/main.9386dac9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cec62325.css",
+    "static/js/main.9386dac9.js"
+  ]
+}
