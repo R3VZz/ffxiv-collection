@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 
-const Mounts = ({ title }) => {
-    const [mountData, setMountData] = useState([]);
-    const [searchMountData, setSearchMountData] = useState("");
-    const [filteredMountData, setFilteredMountData] = useState([]);
+const Spells = ({ title }) => {
+    const [spellData, setSpellData] = useState([]);
+    const [searchSpellData, setSearchSpellData] = useState("");
+    const [filteredSpellData, setFilteredSpellData] = useState([]);
     const [sortOrder, setSortOrder] = useState('asc');
     const [err, setErr] = useState(null);
 
     const fetchHandler = async () => {
         try {
             let response = await fetch(
-                "https://ffxivcollect.com/api/mounts"
+                "https://ffxivcollect.com/api/spells"
             );
 
             if (!response.ok) {
@@ -18,7 +18,7 @@ const Mounts = ({ title }) => {
             }
             let data = await response.json();
             console.log(data)
-            setMountData(data.results);
+            setSpellData(data.results);
         } catch (err) {
             console.log(err.message);
             setErr(err.message);
@@ -30,8 +30,8 @@ const Mounts = ({ title }) => {
     }, [])
 
     useEffect(() => {
-        let filteredData = mountData.filter((mount) =>
-            mount.name.toLowerCase().includes(searchMountData.toLowerCase())
+        let filteredData = spellData.filter((spell) =>
+            spell.name.toLowerCase().includes(searchSpellData.toLowerCase())
         );
 
         if (sortOrder === 'asc') {
@@ -40,11 +40,11 @@ const Mounts = ({ title }) => {
             filteredData.sort((a, b) => b.name.localeCompare(a.name));
         }
 
-        setFilteredMountData(filteredData)
-    }, [searchMountData, sortOrder, mountData])
+        setFilteredSpellData(filteredData)
+    }, [searchSpellData, sortOrder, spellData])
 
     const handleSearch = (e) => {
-        setSearchMountData(e.target.value)
+        setSearchSpellData(e.target.value)
     }
 
     const handleSort = (e) => {
@@ -57,8 +57,8 @@ const Mounts = ({ title }) => {
             <div>
                 <input
                     type='text'
-                    placeholder='Search by name e.g. chocobo'
-                    value={searchMountData}
+                    placeholder='Search by name e.g. flying sardine'
+                    value={searchSpellData}
                     onChange={handleSearch}
                 />
                 <select value={sortOrder} onChange={handleSort}>
@@ -67,30 +67,24 @@ const Mounts = ({ title }) => {
                 </select>
             </div>
             <div className='info-container'>
-                {filteredMountData.length > 0 ? (filteredMountData.map((mount) => (
-                    <div className='info' key={mount.id}>
-                        <div>
-                            <div className='name'>
-                                <h3>Name</h3>
-                                <p>{mount.name}</p>
-                            </div>
-                            <div className='description'>
-                                <h3>Description</h3>
-                                <p>{mount.description}</p>
-                            </div>
+                {filteredSpellData.length > 0 ? (filteredSpellData.map((spell) => (
+                    <div className='info' key={spell.id}>
+                        <div className='name'>
+                            <h3>Name</h3>
+                            <p>{spell.name}</p>
                         </div>
                         <div className='description'>
-                            <h3>Enhanced Description: </h3>
-                            <p>{mount.enhanced_description}</p>
+                            <h3>Description</h3>
+                            <p>{spell.description}</p>
                         </div>
                         <div className='patch'>
-                            <img 
+                            <img
                                 className="icon"
-                                src={mount.icon}
-                                alt="Mount icon"
+                                src={spell.icon}
+                                alt="Spell icon"
                             />
                             <h3>Patch Released: </h3>
-                            <p>{mount.patch}</p>
+                            <p>{spell.patch}</p>
                         </div>
                     </div>
                 ))
@@ -101,4 +95,4 @@ const Mounts = ({ title }) => {
     );
 }
 
-export default Mounts;
+export default Spells;

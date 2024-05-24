@@ -7,11 +7,6 @@ const Achievements = ({ title }) => {
     const [sortOrder, setSortOrder] = useState('asc');
     const [err, setErr] = useState(null);
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const entriesPerPage = 20;
-
-
-
     const fetchHandler = async () => {
         try {
             let response = await fetch(
@@ -49,12 +44,10 @@ const Achievements = ({ title }) => {
 
     const handleSearch = (e) => {
         setSearchAchievementData(e.target.value)
-        setCurrentPage(1)
     }
 
     const handleSort = (e) => {
         setSortOrder(e.target.value)
-        setCurrentPage(1)
     }
 
     return (
@@ -73,28 +66,33 @@ const Achievements = ({ title }) => {
                 </select>
             </div>
             <div className='info-container'>
-                {filteredAchievementData.length > 0 ? (filteredAchievementData.map((achievment) => (
-                    <div className='info' key={achievment.id}>
-                        <div className='name'>
-                            <h3>Name:</h3>
-                            <p>{achievment.name}</p>
+                {filteredAchievementData.length > 0 ? (
+                    filteredAchievementData.map((achievment) => (
+                        <div className='info' key={achievment.id}>
+                            <div className='name'>
+                                <h3>Name:</h3>
+                                <p>{achievment.name}</p>
+                            </div>
+                            <div className='description'>
+                                <h3>Description</h3>
+                                <p>{achievment.description}</p>
+                            </div>
+                            <div>
+                                <h3>Players completed: </h3>
+                                <p>{achievment.owned}</p>
+                            </div>
+                            <div className='patch'>
+                                <img 
+                                    className="icon"
+                                    src={achievment.icon}
+                                    alt="Achievement icon" 
+                                />
+                                <h3>Patch Released: </h3>
+                                <p>{achievment.patch}</p>
+                            </div>
                         </div>
-                        <div className='description'>
-                            <h3>Description</h3>
-                            <p>{achievment.description}</p>
-                        </div>
-                        <div>
-                            <h3>Players completed: </h3>
-                            <p>{achievment.owned}</p>
-                        </div>
-                        <div className='patch'>
-                            <h3>Patch Released: </h3>
-                            <p>{achievment.patch}</p>
-                        </div>
-                    </div>
-                ))
-                ) : (<p>Loading...</p>)
-                }
+                    ))
+                ) : (<h2>Loading...</h2>)}
             </div>
         </div>
     );

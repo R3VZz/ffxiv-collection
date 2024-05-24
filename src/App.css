@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  background-image: url(../public/images/ff14-heavensward-concept-art.jpg);
+  /* background-image: url(../public/images/ff14-heavensward-concept-art.jpg); */
+  background-image: url(../public/images/ff14-shadowbringers-art.jpg);
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -119,22 +120,44 @@ select > option {
   color: black;
 }
 
+.icon {
+  width: 15%;
+  border: white solid 1px;
+  border-radius: 5px;
+}
+
 img {
   width: 100%;
   border: white solid 5px;
   border-radius: 16px;
+  box-shadow: 2px 2px 2px 2px #1b1b1b;
 }
 
-@media (min-width: 600px) {
-  .info {
-    text-align: center;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+
+.info {
+  text-align: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info > div {
+  flex: 1;
+  margin: 0 10px;
+}
+
+@media (max-width: 600px) {
+  nav > ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 
-  .info > div {
-    flex: 1;
-    margin: 0 10px;
+  .info {
+    width: 80%;
+  }
+
+  .icon {
+    width: 60%;
   }
 }

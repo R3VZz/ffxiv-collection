@@ -85,12 +85,17 @@ const Minions = ({title}) => {
                             <p>{minion.enhanced_description}</p>
                         </div>
                         <div className='patch'>
+                            <img 
+                                className="icon"
+                                src={minion.icon}
+                                alt="Minion icon" 
+                            />
                             <h3>Patch Released: </h3>
                             <p>{minion.patch}</p>
                         </div>
                     </div>
                 ))
-                ) : (<p>Loading...</p>)
+                ) : (<h2>Loading...</h2>)
                 }
             </div>
         </div>
